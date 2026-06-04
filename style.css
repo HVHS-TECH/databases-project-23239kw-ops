@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+    size: 4000;
+    font-family:'Lucida Sans';
+}
+h2 {
+    text-align: center;
+    size: 2000;
+    font-family:'Lucida Sans';
+}
+
+#birdComingSegment {
+    color: red;
+    text-align: center;
+    font-family:'Lucida Sans';
+}
+
+#game2Segment {
+    color: yellowgreen;
+    text-align: center;
+    font-family:'Lucida Sans';
+}
+
+#playBirdComing {
+    font-size: 5000;
+    text-align: center;
+    color: yellow;
+    border: 5000;
+}
