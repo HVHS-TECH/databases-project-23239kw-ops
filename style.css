@@ -9,6 +9,20 @@ h2 {
     font-family:'Lucida Sans';
 }
 
+#game1Button {
+    font-size: 5000;
+    text-align: center;
+    color: yellow;
+    border: 5000;
+}
+
+#game2Button {
+    font-size: 5000;
+    text-align: center;
+    color: yellow;
+    border: 5000;
+}
+
 #birdComingSegment {
     color: red;
     text-align: center;
@@ -22,6 +36,13 @@ h2 {
 }
 
 #playBirdComing {
+    font-size: 5000;
+    text-align: center;
+    color: yellow;
+    border: 5000;
+}
+
+#playGeoDash {
     font-size: 5000;
     text-align: center;
     color: yellow;
