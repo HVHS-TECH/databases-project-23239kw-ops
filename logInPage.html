@@ -23,29 +23,19 @@
 
 </head>
 
-<body>
+    <div id="logInButton">
+        <button onclick='fb_popupLogin()'>Log In</button>
+    </div>
 
-  <h1>GAMESITE</h1>
+    <form id="userForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required />
 
-  <div id = "introduction">
-    <h2>
-      This is a game library for two of my games: Bird Coming and GeoDash.
-       In here you will find a leaderboard of the top scores obtained by users.
-    </h2>
-  </div>
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required />
 
-  <div id="logInPageButton">
-    <button onclick="location.href='logInPage.html'">Log In</button>
-  </div>
+      <button onclick="fb_write()">Submit</button>
 
-  <div id="game1Button">
-    <button onclick="location.href='birdComing.html'">BIRD COMING</button>
-  </div>
-
-  <div id="game2Button">
-    <button onclick="location.href='geoDash.html'">GEO-DASH</button>
-  </div>
-
-</body>
+    </form>
 
 </html>
