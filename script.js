@@ -1,30 +1,54 @@
-function fb_popupLogin() {
-  var provider = new firebase.auth.GoogleAuthProvider();
+let currentUser = null;
+let loggedIn = 'false';
 
-  firebase.auth().signInWithPopup(provider).then((result) => {
-    GLOBAL_user = result.user;  // Save the user details object to a global variable
-    console.log("User has logged in")
-    console.log(GLOBAL_user)
-    alert("You've logged in, welcome")
-  });
+function fb_popupLogin() {
+    firebase.auth().onAuthStateChanged((user) => {
+        currentUser = user;
+
+        if (loggedIn = 'false') {
+        console.log("Not logged in");
+
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        provider.addScope('profile');
+        provider.addScope('email');
+
+        console.log("login popup");
+
+        firebase.auth()
+            .signInWithPopup(provider)
+            .then((result) => {
+                currentUser = result.user;
+                console.log('User is logged in');
+                console.log(currentUser);
+                loggedIn = 'true';
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    });
 }
 
 function fb_write() {
+    if (!currentUser) {
+        alert("Please log in first");
+    }else{
+      console.log('successfully logged data')
+    }
 
-    const name =
-    document.getElementById("name").value;
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
 
-    const age =
-    document.getElementById("age").value;
+    if (!name || !age) {
+        alert("Please fill in everything");
+    }
 
-    console.log('Users name is ' + name +
-        '. Their age is ' + age.);
-    //let userID = _user.uid;
-        //console.log(userID);
-    firebase.database().ref("/userInfo/" + name).set({
-
-    name: name,
-    age: age,
-  });
-  document.getElementById('statusMessage').innerHTML = `Form submitted!`
+    firebase.database().ref("userInfo/" + currentUser.uid).set({
+        username: name,
+        age: age,
+        profilePicture: currentUser.photoURL,
+        displayName: currentUser.displayName
+    });
+    return;
 }

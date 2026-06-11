@@ -18,16 +18,19 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
   <!-- firebase end ******************************************-->
   <script src="fb_setup.js"></script>
-  <script src="fb_io.js"></script>
   <script src="script.js"></script>
 
 </head>
+
+    <div id = "returnHomeButton">
+        <button onclick="location.href='index.html'">Return</button>
+    </div>
 
     <div id="logInButton">
         <button onclick='fb_popupLogin()'>Log In</button>
     </div>
 
-    <form id="userForm">
+    <form id="userForm" onsubmit="return false;">
       <label for="name">Your Name:</label>
       <input type="text" id="name" name="name" required />
 
@@ -37,5 +40,7 @@
       <button onclick="fb_write()">Submit</button>
 
     </form>
+
+    <p id="statusMessage"></p>
 
 </html>
