@@ -48,7 +48,7 @@ function fb_write() {
         username: name,
         age: age,
         profilePicture: currentUser.photoURL,
-        displayName: currentUser.displayName
+        displayName: currentUser.displayName,
     });
     return;
 }

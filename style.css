@@ -1,3 +1,20 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+    background-color: #0143a5;
+    text-align: center;
+    padding: 5px 25px;
+    display: flex;
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 2px solid black;
+    text-decoration: none;
+    align-items: center;
+}
+
 h1 {
     text-align: center;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -6,6 +23,14 @@ h2 {
     text-align: center;
     size: 2000;
     font-family:'Lucida Sans';
+}
+
+#logInPageButton {
+    font-size: 5000;
+    padding: 50px;
+    text-align: center;
+    color: yellow;
+    border: 5000;
 }
 
 #game1Button {
