@@ -26,21 +26,23 @@
         <button onclick="location.href='index.html'">Return</button>
     </div>
 
-    <div id="logInButton">
-        <button onclick='fb_popupLogin()'>Log In</button>
+    
+    <div class="container">
+      <div id="logInButton">
+        <button onclick='fb_popupLogin()'>Log In with Google</button>
     </div>
-
     <form id="userForm" onsubmit="return false;">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required />
+      <label for="name">Username:</label>
+      <input type="text" id="name" name="name" maxlength = "15" required />
 
       <label for="age">Age:</label>
-      <input type="text" id="age" name="age" required />
+      <input type="number" id="age" name="age" maxlength = "2" required />
 
       <button onclick="fb_write()">Submit</button>
 
     </form>
-
     <p id="statusMessage"></p>
+    </div>
+    
 
 </html>

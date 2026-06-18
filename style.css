@@ -3,28 +3,6 @@ html {
   width: 100%;
 }
 
-nav {
-    background-color: #0143a5;
-    text-align: center;
-    padding: 5px 25px;
-    display: flex;
-    color: #ffffff;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border: 2px solid black;
-    text-decoration: none;
-    align-items: center;
-}
-
-h1 {
-    text-align: center;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-h2 {
-    text-align: center;
-    size: 2000;
-    font-family:'Lucida Sans';
-}
-
 #logInPageButton {
     font-size: 5000;
     padding: 50px;
@@ -71,4 +49,66 @@ h2 {
     text-align: center;
     color: yellow;
     border: 5000;
+}
+
+body {
+  background-color: #3c76ac;
+  color: yellow;
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background-color: #8eb3df;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: yellow;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  color: yellow;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  background-color: #ffd000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 1.0s;
+}
+
+button:hover {
+  background-color: #ffee0042;
+  transform: translateY(-2px);
+}
+
+#statusMessage {
+  margin-top: 1rem;
+  font-style: italic;
 }
