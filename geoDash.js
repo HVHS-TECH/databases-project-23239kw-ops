@@ -15,10 +15,9 @@ function endGame(_player, _obstacle){
     screenSelector = "end";
     player.remove();
     obstacles.removeAll();
-    // Put your database writes here:
-
-
-
+    //firebase write
+    firebase.database().ref("userInfo/" + currentUser.uid + "/ geoDashHighScore").set({ score
+    });
 }
 
 const SCREEN_WIDTH = 1000;
