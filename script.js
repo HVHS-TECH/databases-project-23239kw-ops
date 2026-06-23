@@ -3,7 +3,6 @@ let loggedIn = 'false';
 
 function fb_popupLogin() {
     firebase.auth().onAuthStateChanged((user) => {
-        currentUser = user;
 
         if (loggedIn = 'false') {
         console.log("Not logged in");

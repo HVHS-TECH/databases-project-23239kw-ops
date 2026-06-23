@@ -95,6 +95,19 @@ function setup() {
 /*******************************************************/
 // draw()
 /*******************************************************/
+let  currentUserID = null;
+console.log("Running the game");
+firebase.auth().onAuthStateChanged(authStateChanged);
+
+function authStateChanged(user) {
+  if (user == null) {
+    currentUserID = null;
+    console.log("No user logged in. Scores will not be saved.");
+  } else {
+    currentUser = user.uid;
+    console.log("Logged in user ID: " + currentUser);
+  }
+}
 
 function start() {
   background(imgGameBg);
@@ -287,6 +300,10 @@ function end() {
     birdIntensity = 2;
 
   }
+  //firebase write
+    let scoreRef = firebase.database().ref("userInfo/" +currentUser + "/ geoDashHighScore").set({
+        score
+    });
 }
 
 function hitBase() {
