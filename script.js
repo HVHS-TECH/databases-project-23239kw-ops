@@ -49,6 +49,6 @@ function fb_write() {
         profilePicture: currentUser.photoURL,
         displayName: currentUser.displayName,
     });
-    document.getElementById('statusMessage').innerHTML = `Info saved!`;
+    ;document.getElementById('statusMessage').innerHTML = `Info saved!`
     return;
 }

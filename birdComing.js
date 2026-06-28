@@ -301,7 +301,7 @@ function end() {
 
   }
   //firebase write
-    let scoreRef = firebase.database().ref("userInfo/" +currentUser + "/ geoDashHighScore").set({
+    let scoreRef = firebase.database().ref("userInfo/" + currentUser + "/ geoDashHighScore").set({
         score
     });
 }

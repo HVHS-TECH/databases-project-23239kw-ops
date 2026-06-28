@@ -22,15 +22,28 @@ function authStateChanged(user) {
 
 // End game code
 function endGame(_player, _obstacle) {
-    console.log("Game ended, you got " + score + " points.")
     screenSelector = "end";
     player.remove();
     obstacles.removeAll();
     //firebase write
-    let scoreRef = firebase.database().ref("userInfo/" +currentUser + "/ geoDashHighScore").set({
-        score
-    });
-}
+        if (currentUser) {
+            const scoreRef =
+                firebase.database().ref("userInfo/" + currentUser + "/geoDashHighscore");
+
+            scoreRef.once("value").then((snapshot) => {
+                const data = snapshot.val();
+                
+                if (!data || score > data.score) {
+                    scoreRef.set({
+                        score: score
+                    });
+                    console.log("Game ended, you got a new high score of " + score + " points!")
+                }else{
+                    console.log("Game ended, you did not beat your high score of " + data.score + " points")
+                }
+            });
+        }
+    }
 
 const SCREEN_WIDTH = 1000;
 const SCREEN_HEIGHT = 300;
