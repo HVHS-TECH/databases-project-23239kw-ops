@@ -16,6 +16,7 @@ function authStateChanged(user) {
     console.log("No user logged in. Scores will not be saved.");
   } else {
     currentUser = user.uid;
+    let displayName = currentUser.displayName
     console.log("Logged in user ID: " + currentUser);
   }
 }
@@ -26,24 +27,47 @@ function endGame(_player, _obstacle) {
     player.remove();
     obstacles.removeAll();
     //firebase write
-        if (currentUser) {
-            const scoreRef =
-                firebase.database().ref("userInfo/" + currentUser + "/geoDashHighscore");
+    // firebase write
+if (currentUser) {
+    const scoreRef = firebase.database()
+        .ref("/geoDashHighscore/" + currentUser);
+
+    // get username from userInfo
+    firebase.database()
+        .ref("userInfo/" + currentUser + "/username")
+        .once("value")
+        .then((nameSnapshot) => {
+
+            const username = nameSnapshot.val() || "Anonymous";
 
             scoreRef.once("value").then((snapshot) => {
                 const data = snapshot.val();
-                
+
                 if (!data || score > data.score) {
+
                     scoreRef.set({
+                        name: username,
                         score: score
                     });
-                    console.log("Game ended, you got a new high score of " + score + " points!")
-                }else{
-                    console.log("Game ended, you did not beat your high score of " + data.score + " points")
+
+                    console.log(
+                        "Game ended, you got a new high score of " +
+                        score +
+                        " points!"
+                    );
+
+                } else {
+                    console.log(
+                        "Game ended, you did not beat your high score of " +
+                        data.score +
+                        " points"
+                    );
                 }
             });
-        }
-    }
+
+        });
+}
+}
 
 const SCREEN_WIDTH = 1000;
 const SCREEN_HEIGHT = 300;

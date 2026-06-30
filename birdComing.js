@@ -291,6 +291,7 @@ if (birdWave.length === 0 && birdsSpawned === birdIntensity) {
 function end() {
   text('GAME OVER, Your score was ' + score, width/2, height/2);
 
+
   if (mouse.presses() && restartButton.mouse.hovering()) {
     gameState = 'game';
     restartButtonButton.remove();
@@ -300,13 +301,41 @@ function end() {
     birdIntensity = 2;
 
   }
-  //firebase write
-    let scoreRef = firebase.database().ref("userInfo/" + currentUser + "/ geoDashHighScore").set({
-        score
-    });
-}
+
+    };
 
 function hitBase() {
+  //firebase write//
+  // firebase write
+if (currentUser) {
+  const scoreRef = firebase.database()
+    .ref("/birdComingHighscore/" + currentUser.uid);
+
+  scoreRef.once("value").then((snapshot) => {
+    const data = snapshot.val();
+
+    if (!data || score > data.score) {
+      scoreRef.set({
+        score: score,
+        name: currentUser.displayName || "Anonymous"
+      });
+
+      console.log(
+        "Game ended, you got a new high score of " +
+        score +
+        " points!"
+      );
+    } else {
+      console.log(
+        "Game ended, you did not beat your high score of " +
+        data.score +
+        " points"
+      );
+    }
+  });
+}
+
+  ///
   birdWave.removeAll();
     birdBosses.removeAll();
     console.log('gameover')
