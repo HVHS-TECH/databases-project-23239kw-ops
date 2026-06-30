@@ -305,35 +305,47 @@ function end() {
     };
 
 function hitBase() {
-  //firebase write//
-  // firebase write
+  // firebase write//
 if (currentUser) {
-  const scoreRef = firebase.database()
-    .ref("/birdComingHighscore/" + currentUser.uid);
+    const scoreRef = firebase.database()
+        .ref("/geoDashHighscore/" + currentUser);
 
-  scoreRef.once("value").then((snapshot) => {
-    const data = snapshot.val();
+    // get username from userInfo
+    firebase.database()
+        .ref("userInfo/" + currentUser + "/username")
+        .once("value")
+        .then((nameSnapshot) => {
 
-    if (!data || score > data.score) {
-      scoreRef.set({
-        score: score,
-        name: currentUser.displayName || "Anonymous"
-      });
+            const username = nameSnapshot.val();
 
-      console.log(
-        "Game ended, you got a new high score of " +
-        score +
-        " points!"
-      );
-    } else {
-      console.log(
-        "Game ended, you did not beat your high score of " +
-        data.score +
-        " points"
-      );
-    }
-  });
+            scoreRef.once("value").then((snapshot) => {
+                const data = snapshot.val();
+
+                if (!data || score > data.score) {
+
+                    scoreRef.set({
+                        name: username,
+                        score: score
+                    });
+
+                    console.log(
+                        "Game ended, you got a new high score of " +
+                        score +
+                        " points!"
+                    );
+
+                } else {
+                    console.log(
+                        "Game ended, you did not beat your high score of " +
+                        data.score +
+                        " points"
+                    );
+                }
+            });
+
+        });
 }
+
 
   ///
   birdWave.removeAll();
@@ -344,8 +356,8 @@ if (currentUser) {
      restartButton = new Sprite(600, height/2, 100, 's');
      imgRestartButton.resize(100,100);
   restartButton.image = imgRestartButton;
-  }
-
+  
+}
 function draw() {
 
   birdWave.overlaps(base, hitBase);
