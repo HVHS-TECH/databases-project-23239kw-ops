@@ -1,18 +1,22 @@
-function loadGeoDashLeaderboard() {
-    
-    let leaderboard = document.getElementById("GeoDashLeaderboard");
-    
-    firebase.database().ref("userInfo/").once("value", function(snapshot) {
-       leaderboard.innerHTML = "";  
-       snapshot.forEach(function(childSnapshot) {
-        let userData = childSnapshot.val();
+firebase.database()
+    .ref("userInfo")
+    .once("value")
+    .then(function(snapshot){
 
-        if (userData.bestScore2 != null) {
-        leaderboard.innerHTML +=
-          "<p>" + userData.gameName + ": " + userData.bestScore2 + "</p>";
+        let leaderboard = [];
 
-        }
+        snapshot.forEach(function(child){
 
+            leaderboard.push({
+                name: child.val().name,
+                score: child.val().geoDashHighScore
+            });
+
+        });
+
+        leaderboard.sort(function(a,b){
+            return b.score - a.score;
+        });
+
+        console.log(leaderboard);
     });
-  });
-}
