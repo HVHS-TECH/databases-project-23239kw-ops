@@ -31,7 +31,6 @@ function endGame(_player, _obstacle) {
 if (currentUser) {
     const scoreRef = firebase.database()
         .ref("/geoDashHighscore/" + currentUser);
-
     // get username from userInfo
     firebase.database()
         .ref("userInfo/" + currentUser + "/username")

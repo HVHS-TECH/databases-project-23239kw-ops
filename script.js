@@ -1,5 +1,8 @@
 let currentUser = null;
 
+let bannedPerson = "3o2LdLYTgEe1FmJTZnjbpzoqzOy1";//"8gfD2s3YcthJyhdiuipoc81F9eP2";
+let bannedPerson2 = "fY29fuSQc7U0PEu1bIhsvZ52YtI2";
+
 // Keep track of authentication state
 firebase.auth().onAuthStateChanged((user) => {
     currentUser = user;

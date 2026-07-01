@@ -308,6 +308,7 @@ function end() {
 
 function hitBase() {
   // firebase write//
+  
 if (currentUser) {
     const scoreRef = firebase.database()
         .ref("/birdComingHighscore/" + currentUser);
