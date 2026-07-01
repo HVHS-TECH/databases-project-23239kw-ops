@@ -7,6 +7,21 @@
 /*******************************************************/
 // setup()
 /*******************************************************/
+let  currentUserID = null;
+console.log("Running the game");
+firebase.auth().onAuthStateChanged(authStateChanged);
+
+function authStateChanged(user) {
+  if (user == null) {
+    currentUserID = null;
+    console.log("No user logged in. Scores will not be saved.");
+  } else {
+    currentUser = user.uid;
+    let displayName = currentUser.displayName
+    console.log("Logged in user ID: " + currentUser);
+  }
+}
+
 function preload() {
 
   imgPlayer = loadImage('assets1/images/cannon_1.png');
@@ -95,19 +110,6 @@ function setup() {
 /*******************************************************/
 // draw()
 /*******************************************************/
-let  currentUserID = null;
-console.log("Running the game");
-firebase.auth().onAuthStateChanged(authStateChanged);
-
-function authStateChanged(user) {
-  if (user == null) {
-    currentUserID = null;
-    console.log("No user logged in. Scores will not be saved.");
-  } else {
-    currentUser = user.uid;
-    console.log("Logged in user ID: " + currentUser);
-  }
-}
 
 function start() {
   background(imgGameBg);
