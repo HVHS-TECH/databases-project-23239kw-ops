@@ -310,7 +310,7 @@ function hitBase() {
   // firebase write//
 if (currentUser) {
     const scoreRef = firebase.database()
-        .ref("/geoDashHighscore/" + currentUser);
+        .ref("/birdComingHighscore/" + currentUser);
 
     // get username from userInfo
     firebase.database()
