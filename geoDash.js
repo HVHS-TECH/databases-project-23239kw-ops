@@ -37,7 +37,7 @@ if (currentUser) {
         .once("value")
         .then((nameSnapshot) => {
 
-            const username = nameSnapshot.val() || "Anonymous";
+            const username = nameSnapshot.val();
 
             scoreRef.once("value").then((snapshot) => {
                 const data = snapshot.val();
